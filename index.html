@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>U.S. Black Business Show™ — Where Black Business Builds America's Future</title>
+  <meta name="description" content="America's Premier National Platform for Black Entrepreneurship. November 16-18, 2026 · Atlanta, Georgia. Opening Global Entrepreneurship Week during America's 250th anniversary.">
+
+  <!-- Bootstrap 5.3 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- Google Fonts — elevated alternative to Arial that preserves brand authority -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================
+       BRAND TOKENS
+       ============================ */
+    :root {
+      --navy:  #142A45;
+      --gold:  #C59A13;
+      --white: #FFFFFF;
+      --light: #F8F8F8;
+      --gray:  #333333;
+      --gold-hover: #A88210;
+      --navy-light: #1B3A5C;
+    }
+
+    /* ============================
+       BASE
+       ============================ */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+      color: var(--navy);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    img { max-width: 100%; height: auto; }
+
+    /* ============================
+       UTILITY
+       ============================ */
+    .text-gold  { color: var(--gold) !important; }
+    .text-navy  { color: var(--navy) !important; }
+    .bg-navy    { background-color: var(--navy) !important; }
+    .bg-gold    { background-color: var(--gold) !important; }
+    .bg-light-custom { background-color: var(--light) !important; }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 700;
+      border: none;
+      padding: 0.75rem 2rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+    .btn-gold:hover {
+      background: var(--gold-hover);
+      color: var(--white);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(197,154,19,0.35);
+    }
+
+    .btn-outline-gold {
+      background: transparent;
+      color: var(--gold);
+      font-weight: 700;
+      border: 2px solid var(--gold);
+      padding: 0.7rem 2rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+    .btn-outline-gold:hover {
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    .btn-outline-white {
+      background: transparent;
+      color: var(--white);
+      font-weight: 600;
+      border: 2px solid var(--white);
+      padding: 0.65rem 1.8rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      transition: all 0.3s ease;
+    }
+    .btn-outline-white:hover {
+      background: var(--white);
+      color: var(--navy);
+    }
+
+    .section-pad { padding: 5rem 0; }
+
+    .section-label {
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    /* ============================
+       NAVBAR
+       ============================ */
+    .navbar-usbbs {
+      background: var(--navy);
+      padding: 0.6rem 0;
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      transition: box-shadow 0.3s ease;
+    }
+    .navbar-usbbs.scrolled {
+      box-shadow: 0 4px 30px rgba(0,0,0,0.25);
+    }
+    .navbar-usbbs .navbar-brand {
+      color: var(--white);
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: 0.02em;
+      line-height: 1.2;
+    }
+    .navbar-usbbs .navbar-brand .brand-us { color: var(--gold); }
+    .navbar-usbbs .navbar-brand .brand-show { color: var(--gold); }
+    .navbar-usbbs .nav-link {
+      color: rgba(255,255,255,0.8);
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.5rem 1rem !important;
+      transition: color 0.2s;
+    }
+    .navbar-usbbs .nav-link:hover,
+    .navbar-usbbs .nav-link:focus { color: var(--gold); }
+    .navbar-toggler { border-color: var(--gold); }
+    .navbar-toggler-icon { filter: invert(1); }
+
+    /* ============================
+       HERO
+       ============================ */
+    .hero {
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 80%;
+      height: 200%;
+      background: radial-gradient(ellipse at center, rgba(197,154,19,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 120px;
+      background: linear-gradient(to top, var(--navy), transparent);
+      pointer-events: none;
+    }
+
+    /* Shield decorative element */
+    .hero-shield-bg {
+      position: absolute;
+      right: -5%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 500px;
+      height: 580px;
+      opacity: 0.04;
+      pointer-events: none;
+    }
+    .hero-shield-bg svg { width: 100%; height: 100%; }
+
+    .hero-date-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: rgba(197,154,19,0.12);
+      border: 1px solid rgba(197,154,19,0.3);
+      border-radius: 50px;
+      padding: 0.5rem 1.25rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 1.75rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+    .hero h1 .hero-gold { color: var(--gold); }
+
+    .hero-tagline {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: rgba(255,255,255,0.7);
+      font-weight: 500;
+      max-width: 540px;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 3rem; }
+
+    .hero-meta {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .hero-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    .hero-meta-item i { color: var(--gold); font-size: 1.1rem; }
+
+    /* ============================
+       STATS MARQUEE
+       ============================ */
+    .stats-bar {
+      background: var(--gold);
+      padding: 1.25rem 0;
+      position: relative;
+      z-index: 2;
+    }
+    .stat-item {
+      text-align: center;
+      padding: 0.5rem 1rem;
+    }
+    .stat-number {
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(20,42,69,0.7);
+      margin-top: 0.25rem;
+    }
+
+    /* ============================
+       ABOUT
+       ============================ */
+    .about-section { background: var(--white); }
+    .about-section h2 {
+      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+      font-weight: 800;
+      line-height: 1.15;
+    }
+    .about-highlight {
+      border-left: 4px solid var(--gold);
+      padding-left: 1.25rem;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--gray);
+    }
+    .about-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--light);
+      border-radius: 50px;
+      padding: 0.6rem 1.25rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .about-pill i { color: var(--gold); }
+
+    /* ============================
+       GET INVOLVED CARDS
+       ============================ */
+    .involve-section { background: var(--light); }
+
+    .involve-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 2rem 1.75rem;
+      height: 100%;
+      border: 1px solid rgba(20,42,69,0.06);
+      transition: all 0.35s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .involve-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s ease;
+    }
+    .involve-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(20,42,69,0.1);
+      border-color: transparent;
+    }
+    .involve-card:hover::before { transform: scaleX(1); }
+
+    .involve-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 1.25rem;
+      background: rgba(197,154,19,0.1);
+      color: var(--gold);
+    }
+
+    .involve-card h5 {
+      font-weight: 800;
+      font-size: 1.1rem;
+      margin-bottom: 0.6rem;
+    }
+    .involve-card p {
+      color: var(--gray);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+    }
+    .involve-link {
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--gold);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: gap 0.2s ease;
+    }
+    .involve-link:hover { gap: 0.75rem; color: var(--gold-hover); }
+
+    /* ============================
+       GALA / 250 TEASER
+       ============================ */
+    .gala-section {
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+    }
+    .gala-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -10%;
+      width: 50%;
+      height: 100%;
+      background: radial-gradient(ellipse at center, rgba(197,154,19,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .gala-section h2 {
+      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.15;
+    }
+    .gala-number {
+      font-size: clamp(5rem, 12vw, 9rem);
+      font-weight: 800;
+      color: var(--gold);
+      line-height: 1;
+      opacity: 0.15;
+      position: absolute;
+      right: 5%;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+
+    /* ============================
+       SCROLLING MARQUEE
+       ============================ */
+    .marquee-wrap {
+      overflow: hidden;
+      background: var(--navy);
+      padding: 1rem 0;
+      border-top: 1px solid rgba(197,154,19,0.15);
+      border-bottom: 1px solid rgba(197,154,19,0.15);
+    }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 30s linear infinite;
+    }
+    .marquee-track span {
+      white-space: nowrap;
+      padding: 0 2.5rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.35);
+    }
+    .marquee-track span .sep { color: var(--gold); margin: 0 1.5rem; }
+    @keyframes marquee {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ============================
+       NEWSLETTER / CTA BAND
+       ============================ */
+    .cta-band {
+      background: var(--gold);
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-band::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 40%;
+      height: 200%;
+      background: radial-gradient(ellipse at center, rgba(255,255,255,0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .cta-band h2 {
+      font-weight: 800;
+      color: var(--navy);
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+    }
+    .cta-band p { color: rgba(20,42,69,0.75); font-weight: 500; }
+
+    .cta-email-form .form-control {
+      border: 2px solid rgba(20,42,69,0.2);
+      border-radius: 4px;
+      padding: 0.75rem 1rem;
+      font-size: 0.95rem;
+      background: var(--white);
+      color: var(--navy);
+    }
+    .cta-email-form .form-control:focus {
+      border-color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(20,42,69,0.15);
+    }
+    .btn-navy {
+      background: var(--navy);
+      color: var(--white);
+      font-weight: 700;
+      border: none;
+      padding: 0.75rem 2rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+    .btn-navy:hover {
+      background: var(--navy-light);
+      color: var(--gold);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(20,42,69,0.3);
+    }
+
+    /* ============================
+       FOOTER
+       ============================ */
+    .site-footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.55);
+      font-size: 0.85rem;
+    }
+    .site-footer a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .site-footer a:hover { color: var(--gold); }
+    .footer-brand {
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--white);
+    }
+    .footer-brand .brand-us,
+    .footer-brand .brand-show { color: var(--gold); }
+    .footer-links { list-style: none; padding: 0; }
+    .footer-links li { margin-bottom: 0.5rem; }
+    .footer-social a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.2);
+      font-size: 1rem;
+      transition: all 0.2s;
+    }
+    .footer-social a:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: rgba(197,154,19,0.1);
+    }
+    .footer-divider {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      margin: 2rem 0 1.5rem;
+    }
+
+    /* ============================
+       ANIMATIONS
+       ============================ */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ============================
+       RESPONSIVE
+       ============================ */
+    @media (max-width: 991.98px) {
+      .hero { min-height: auto; padding-top: 7rem; padding-bottom: 3rem; }
+      .gala-number { font-size: 6rem; right: 2%; opacity: 0.08; }
+    }
+    @media (max-width: 575.98px) {
+      .hero-ctas { flex-direction: column; }
+      .hero-ctas .btn { width: 100%; text-align: center; }
+      .hero-meta { gap: 1.5rem; }
+      .stat-number { font-size: 1.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================
+       NAVBAR
+       ======================== -->
+  <nav class="navbar navbar-expand-lg navbar-usbbs" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <span class="brand-us">U.S.</span> BLACK BUSINESS<br class="d-sm-none"> <span class="brand-show">SHOW</span>™
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navContent">
+        <ul class="navbar-nav align-items-lg-center gap-lg-1">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#involved">Get Involved</a></li>
+          <li class="nav-item"><a class="nav-link" href="#gala">The 250 Gala</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item ms-lg-2">
+            <a class="btn btn-gold btn-sm px-3 py-2" href="#involved">Register Interest</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========================
+       HERO
+       ======================== -->
+  <section class="hero" id="hero">
+    <!-- Decorative shield watermark -->
+    <div class="hero-shield-bg" aria-hidden="true">
+      <svg viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M100 0L200 40V140C200 190 150 230 100 240C50 230 0 190 0 140V40L100 0Z" fill="white"/>
+      </svg>
+    </div>
+
+    <div class="container position-relative" style="z-index:2;">
+      <div class="row">
+        <div class="col-lg-8 col-xl-7">
+          <div class="hero-date-badge">
+            <i class="bi bi-calendar3"></i>
+            November 16 – 18, 2026 &nbsp;·&nbsp; Atlanta, Georgia
+          </div>
+          <h1>
+            <span class="hero-gold">America's Premier</span><br>
+            National Platform for<br>
+            Black Entrepreneurship
+          </h1>
+          <p class="hero-tagline">
+            Opening Global Entrepreneurship Week 2026 during America's 250th anniversary year. 
+            Commerce. Capital. Celebration.
+          </p>
+          <div class="hero-ctas">
+            <a href="#involved" class="btn btn-gold">Get Involved</a>
+            <a href="#about" class="btn btn-outline-white">Learn More</a>
+          </div>
+          <div class="hero-meta">
+            <div class="hero-meta-item">
+              <i class="bi bi-geo-alt-fill"></i> Atlanta, GA
+            </div>
+            <div class="hero-meta-item">
+              <i class="bi bi-people-fill"></i> 5,000+ Expected
+            </div>
+            <div class="hero-meta-item">
+              <i class="bi bi-globe2"></i> GEW 2026
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================
+       STATS BAR
+       ======================== -->
+  <section class="stats-bar">
+    <div class="container">
+      <div class="row g-0 text-center">
+        <div class="col-6 col-md-3">
+          <div class="stat-item">
+            <div class="stat-number">3</div>
+            <div class="stat-label">Power-Packed Days</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-item">
+            <div class="stat-number">5,000+</div>
+            <div class="stat-label">Attendees</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-item">
+            <div class="stat-number">250</div>
+            <div class="stat-label">Founders Honored</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-item">
+            <div class="stat-number">1</div>
+            <div class="stat-label">Unified Platform</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================
+       SCROLLING MARQUEE
+       ======================== -->
+  <div class="marquee-wrap" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Commerce <span class="sep">★</span> Capital Access <span class="sep">★</span> Connections <span class="sep">★</span> Celebration <span class="sep">★</span> Corporate Contracts <span class="sep">★</span> Community <span class="sep">★</span> Culture <span class="sep">★</span></span>
+      <span>Commerce <span class="sep">★</span> Capital Access <span class="sep">★</span> Connections <span class="sep">★</span> Celebration <span class="sep">★</span> Corporate Contracts <span class="sep">★</span> Community <span class="sep">★</span> Culture <span class="sep">★</span></span>
+    </div>
+  </div>
+
+  <!-- ========================
+       ABOUT
+       ======================== -->
+  <section class="about-section section-pad" id="about">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6 fade-up">
+          <div class="section-label">About the Show</div>
+          <h2>
+            Where Black Business<br>
+            Builds <span class="text-gold">America's Future</span>™
+          </h2>
+        </div>
+        <div class="col-lg-6 fade-up">
+          <p class="about-highlight">
+            The U.S. Black Business Show™ brings together entrepreneurs, investors, corporations, government agencies, and ecosystem support organizations under one roof for commerce, capital access, recognition, and celebration.
+          </p>
+          <div class="d-flex flex-wrap gap-2 mt-4">
+            <span class="about-pill"><i class="bi bi-check-circle-fill"></i> Capital Access</span>
+            <span class="about-pill"><i class="bi bi-check-circle-fill"></i> Corporate Contracts</span>
+            <span class="about-pill"><i class="bi bi-check-circle-fill"></i> Ecosystem Building</span>
+            <span class="about-pill"><i class="bi bi-check-circle-fill"></i> 250th Anniversary</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================
+       GET INVOLVED
+       ======================== -->
+  <section class="involve-section section-pad" id="involved">
+    <div class="container">
+      <div class="text-center mb-5 fade-up">
+        <div class="section-label">Get Involved</div>
+        <h2 class="fw-bold" style="font-size:clamp(1.75rem,3.5vw,2.5rem);">
+          Join the Movement
+        </h2>
+        <p class="text-muted mt-2" style="max-width:560px;margin:0 auto;">
+          Whether you're building, investing, exhibiting, speaking, advertising, or volunteering — there's a seat at the table for you.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <!-- Attendees -->
+        <div class="col-md-6 col-lg-4 fade-up">
+          <div class="involve-card">
+            <div class="involve-icon"><i class="bi bi-person-check"></i></div>
+            <h5>Attend</h5>
+            <p>Entrepreneurs, professionals, and supporters — register your interest to be first in line when tickets drop.</p>
+            <a href="#" class="involve-link" data-tally="attendees">Register Interest <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+        <!-- Speakers -->
+        <div class="col-md-6 col-lg-4 fade-up">
+          <div class="involve-card">
+            <div class="involve-icon"><i class="bi bi-mic"></i></div>
+            <h5>Speak</h5>
+            <p>Share your expertise, story, and insights with thousands of entrepreneurs and business leaders.</p>
+            <a href="#" class="involve-link" data-tally="speakers">Apply to Speak <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+        <!-- Sponsors -->
+        <div class="col-md-6 col-lg-4 fade-up">
+          <div class="involve-card">
+            <div class="involve-icon"><i class="bi bi-award"></i></div>
+            <h5>Sponsor</h5>
+            <p>Align your brand with America's premier platform for Black entrepreneurship and reach 5,000+ decision makers.</p>
+            <a href="#" class="involve-link" data-tally="sponsors">Explore Sponsorship <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+        <!-- Exhibitors -->
+        <div class="col-md-6 col-lg-4 fade-up">
+          <div class="involve-card">
+            <div class="involve-icon"><i class="bi bi-shop-window"></i></div>
+            <h5>Exhibit</h5>
+            <p>Showcase your products, services, and solutions directly to engaged buyers and partners.</p>
+            <a href="#" class="involve-link" data-tally="exhibitors">Book a Stand <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+        <!-- Advertisers -->
+        <div class="col-md-6 col-lg-4 fade-up">
+          <div class="involve-card">
+            <div class="involve-icon"><i class="bi bi-megaphone"></i></div>
+            <h5>Advertise</h5>
+            <p>Reach our growing audience through digital, print, and on-site advertising opportunities.</p>
+            <a href="#" class="involve-link" data-tally="advertisers">Advertise With Us <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+        <!-- Volunteers -->
+        <div class="col-md-6 col-lg-4 fade-up">
+          <div class="involve-card">
+            <div class="involve-icon"><i class="bi bi-heart"></i></div>
+            <h5>Volunteer</h5>
+            <p>Be part of history. Join the team making America's first national Black business platform a reality.</p>
+            <a href="#" class="involve-link" data-tally="volunteers">Join the Team <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================
+       THE 250 GALA
+       ======================== -->
+  <section class="gala-section section-pad" id="gala">
+    <div class="gala-number" aria-hidden="true">250</div>
+    <div class="container position-relative" style="z-index:2;">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-7 fade-up">
+          <div class="section-label">Special Event</div>
+          <h2>
+            The 250 Black Business<br>
+            <span class="text-gold">Founders Gala</span>
+          </h2>
+          <p class="mt-3 mb-4" style="color:rgba(255,255,255,0.65); max-width:520px; line-height:1.7;">
+            Honoring 250 influential Black business founders during America's 250th anniversary. A landmark celebration of legacy, resilience, and the entrepreneurs building the future.
+          </p>
+          <a href="#involved" class="btn btn-gold">Nominate a Founder</a>
+        </div>
+        <div class="col-lg-5 text-center fade-up">
+          <div class="d-inline-block position-relative">
+            <div style="
+              width: 260px; height: 320px;
+              border: 2px solid var(--gold);
+              border-radius: 12px;
+              display: flex; align-items: center; justify-content: center;
+              flex-direction: column; gap: 0.5rem;
+              margin: 0 auto;
+            ">
+              <i class="bi bi-trophy" style="font-size:3rem; color:var(--gold);"></i>
+              <span style="color:var(--gold); font-weight:800; font-size:3.5rem; line-height:1;">250</span>
+              <span style="color:rgba(255,255,255,0.6); font-weight:600; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.1em;">Founders Honored</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================
+       CTA / NEWSLETTER BAND
+       ======================== -->
+  <section class="cta-band section-pad" id="contact">
+    <div class="container position-relative" style="z-index:2;">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-6 fade-up">
+          <h2>Stay in the Loop</h2>
+          <p class="mb-0">Be the first to hear about speaker announcements, early-bird tickets, and partnership opportunities.</p>
+        </div>
+        <div class="col-lg-6 fade-up">
+          <form class="cta-email-form d-flex gap-2 flex-column flex-sm-row" onsubmit="return false;">
+            <input type="email" class="form-control" placeholder="Enter your email" aria-label="Email">
+            <button type="submit" class="btn btn-navy flex-shrink-0">Subscribe</button>
+          </form>
+          <small class="d-block mt-2" style="color:rgba(20,42,69,0.5);">
+            No spam. Unsubscribe anytime.
+          </small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================
+       FOOTER
+       ======================== -->
+  <footer class="site-footer" style="padding:3rem 0 2rem;">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="footer-brand mb-3">
+            <span class="brand-us">U.S.</span> BLACK BUSINESS <span class="brand-show">SHOW</span>™
+          </div>
+          <p style="max-width:320px; line-height:1.7;">
+            America's Premier National Platform for Black Entrepreneurship. Produced by Eventus Nation.
+          </p>
+          <div class="footer-social d-flex gap-2 mt-3">
+            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="#" aria-label="X / Twitter"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          </div>
+        </div>
+        <div class="col-6 col-lg-2">
+          <h6 class="text-white fw-bold mb-3" style="font-size:0.85rem; text-transform:uppercase; letter-spacing:0.08em;">Event</h6>
+          <ul class="footer-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#involved">Get Involved</a></li>
+            <li><a href="#gala">The 250 Gala</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-lg-2">
+          <h6 class="text-white fw-bold mb-3" style="font-size:0.85rem; text-transform:uppercase; letter-spacing:0.08em;">Participate</h6>
+          <ul class="footer-links">
+            <li><a href="#involved">Attend</a></li>
+            <li><a href="#involved">Speak</a></li>
+            <li><a href="#involved">Sponsor</a></li>
+            <li><a href="#involved">Exhibit</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4">
+          <h6 class="text-white fw-bold mb-3" style="font-size:0.85rem; text-transform:uppercase; letter-spacing:0.08em;">Contact</h6>
+          <ul class="footer-links">
+            <li><i class="bi bi-envelope me-2 text-gold"></i> <a href="mailto:info@usblackbusinessshow.com">info@usblackbusinessshow.com</a></li>
+            <li><i class="bi bi-geo-alt me-2 text-gold"></i> Atlanta, Georgia</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-divider"></div>
+      <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2">
+        <span>&copy; 2026 U.S. Black Business Show™. All rights reserved.</span>
+        <span>Produced by <a href="#" class="text-gold">Eventus Nation</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Navbar scroll shadow
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Intersection Observer for fade-up animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          // Stagger sibling animations
+          const siblings = entry.target.parentElement.querySelectorAll('.fade-up');
+          const index = Array.from(siblings).indexOf(entry.target);
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, index * 100);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          const offset = nav.offsetHeight + 20;
+          const y = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+          // Close mobile nav
+          const collapse = document.getElementById('navContent');
+          const bsCollapse = bootstrap.Collapse.getInstance(collapse);
+          if (bsCollapse) bsCollapse.hide();
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
